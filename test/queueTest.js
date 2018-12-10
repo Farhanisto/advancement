@@ -13,7 +13,7 @@ describe('queue', () =>{
         assert.equal(queue.enqueue(1,2,3),5)
         assert.deepEqual(queue.queue, [4,5,1,2,3])
     })
-    it("should remove items from the from the front of the queue",()=>{
+    it("should remove items from the from the back of the queue",()=>{
         const queue = new Queue(4,5)
         assert.equal(queue.dequeue(), 5)
     })
