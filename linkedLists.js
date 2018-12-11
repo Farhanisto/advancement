@@ -11,20 +11,21 @@ module.exports = class LinkedList {
         this.head = null
         this.tail = null
     }
-    addToHead(value){
+    addToHead(value){ 
         const node = new Node(value, null, this.head)
-        if(this.head) this.head.next = node
+        if(this.head) {this.head.next = node;}
         else this.tail = node
         this.head = node
     }
     addToTail(value){
         const node = new Node(value, this.tail, null)
         if(this.tail) this.tail.prev = node
+        else this.head =node
         this.tail = node
     }
     removeHead(){
         if(!this.head) return null 
-        const value = this.tail.value
+        const value = this.head.value
         this.head = this.head.prev
         if(this.head) this.head.next = null
         else this.tail = null
@@ -46,6 +47,17 @@ module.exports = class LinkedList {
             current = current.prev 
         }
         return null 
+    }
+    indexOf(value) {
+        const indexes = [];
+        let current = this.tail;
+        let index = 0;
+        while (current) {
+            if (current.value === value) indexes.push(index);
+            current = current.next;
+            index++;
+        }
+        return indexes;
     }
 
 }
